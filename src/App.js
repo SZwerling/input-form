@@ -5,34 +5,39 @@ class App extends React.Component{
       constructor(props){
         super(props);
         this.state = {
-          value: '',
-          arr: ['worm', 'start']
+          frontValue: '',
+          backValue: '',
+          arr: []
         };
       }
 
       
-      handleChangeValue = (e) => {
-        this.setState({ value: e.target.value});
+      handleChangeFrontValue = (e) => {
+        this.setState({ frontValue: e.target.value });
+      }
+      handleChangeBackValue = (e) => {
+        this.setState({ backValue: e.target.value });
       }
 
       onAddItem = (e) => {
         e.preventDefault();
-        this.setState({arr: [...this.state.arr, this.state.value]})
+        this.setState({arr: [...this.state.arr, {front: this.state.frontValue, back: this.state.backValue}]})
+        this.setState({ frontValue: ''})
+        this.setState({ backValue: ''})
       }
-
-     
-      // this.setState({
-      //   cart: ['ice cream'],
-      //   total: 5
 
 
       render(){ 
-        console.log(this.state)    
+        console.log(this.state.arr)    
         return(
           <form onSubmit={this.onAddItem}>
             <label>
-              INPUT FIELD
-              <input type="text" onChange={this.handleChangeValue} />
+              Front
+              <input type="text" value={this.state.frontValue} onChange={this.handleChangeFrontValue} />
+            </label>
+            <label>
+              Back
+              <input type="text" value={this.state.backValue} onChange={this.handleChangeBackValue} />
             </label>
             <input type="submit" value="submit" />
           </form>
