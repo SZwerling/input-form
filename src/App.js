@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import InputComponent from './InputComponent';
+import Cards from './Cards';
 
 class App extends React.Component{
       constructor(props){
@@ -21,28 +23,32 @@ class App extends React.Component{
 
       onAddItem = (e) => {
         e.preventDefault();
-        this.setState({arr: [...this.state.arr, {front: this.state.frontValue, back: this.state.backValue}]})
-        this.setState({ frontValue: ''})
-        this.setState({ backValue: ''})
+        this.setState({arr: [...this.state.arr, 
+          {
+            Id: this.state.arr.length,
+            front: this.state.frontValue, 
+            back: this.state.backValue
+          }
+        ]})
+        this.setState({ frontValue: '', backValue: ''})
+        
       }
-
 
       render(){ 
-        console.log(this.state.arr)    
+        console.log(this.state)
         return(
-          <form onSubmit={this.onAddItem}>
-            <label>
-              Front
-              <input type="text" value={this.state.frontValue} onChange={this.handleChangeFrontValue} />
-            </label>
-            <label>
-              Back
-              <input type="text" value={this.state.backValue} onChange={this.handleChangeBackValue} />
-            </label>
-            <input type="submit" value="submit" />
-          </form>
+          <React.Fragment>
+            < InputComponent 
+            onAddItem={this.onAddItem} 
+            frontValue={this.state.frontValue}
+            backValue={this.state.backValue}
+            handleChangeFrontValue={this.handleChangeFrontValue} 
+            handleChangeBackValue={this.handleChangeBackValue}
+            />
+            <Cards cards={this.state.arr}/>
+         </React.Fragment>
         )
       }
-}
+} 
 
 export default App;
