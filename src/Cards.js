@@ -8,7 +8,7 @@ console.log(props)
 
 const cards = props.cards.map((card) => {  //map to props to card here
     return(
-        <div>
+        <div key={card.Id}>
            This is the card ID: {card.Id} <br/>
             Front word: {card.front} <br/>
             Back word: {card.back}

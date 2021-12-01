@@ -1,3 +1,20 @@
 body {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+.card {
+  padding: 2rem;
+  margin: 2rem;
+  font-family: 'Merienda One', cursive;
+  width: 30rem;
+  height: 15rem;
+  font-size: 2.5rem;
+  background-image:
+  linear-gradient(180deg, white 3rem, #F0A4A4 calc(3rem), #F0A4A4 calc(3rem + 2px), transparent 1px),
+  repeating-linear-gradient(0deg, transparent, transparent 1.5rem, #DDD 1px, #DDD calc(1.5rem + 1px));
+box-shadow: 1.5px 1.5px 3.5px rgba(0,0,0,.5);
+}
+
+.form {
+  margin: 1rem;
+}
