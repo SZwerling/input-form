@@ -19,7 +19,7 @@ class Image extends React.Component {
                 <img 
                 
                 alt={this.props.image.descrption} 
-                src={this.props.image.urls.regular}
+                src={this.props.image.urls.small}
                 />
             </div>
         )

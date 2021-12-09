@@ -16,14 +16,20 @@ class App extends React.Component{
         };
       }
 
-    
+    // onSearchSubmit(term){
+    //   axios.get('https://api.unsplash.com/search/photos',{
+    //     params: { query: term },
+    //     headers: {
+    //       Authorization: 'Client-ID K2NNfQZQYGr5Xl2MG1U74fyyYJGXA-zDR_TyZJLR4zo'
+    //     }
+    //   });
+    // }
 
       onSearchSubmit = async (term) => {
         const response = await unsplash.get('/search/photos', {
             params: { query: term },  
         })
         this.setState({ image: response.data.results});
-        console.log(this.state.image)
     };
 
   
@@ -46,7 +52,9 @@ class App extends React.Component{
             back: this.state.backValue
           }
         ]})
-        this.setState({ frontValue: '', backValue: ''})        
+        this.onSearchSubmit(this.state.frontValue);
+        this.setState({ frontValue: '', backValue: ''});
+                
       }
 
       render(){ 
