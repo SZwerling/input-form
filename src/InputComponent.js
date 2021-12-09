@@ -4,6 +4,8 @@ import React from 'react';
 class Input extends React.Component{
   
 
+// this.props.onSearchSubmit(this.state.term)
+
     render(){
         return(
          

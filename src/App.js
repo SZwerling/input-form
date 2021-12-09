@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import InputComponent from './InputComponent';
 import Cards from './Cards';
+import unsplash from './api/unsplash';
+import Image from './ImageComponent';
 
 class App extends React.Component{
       constructor(props){
@@ -9,10 +11,23 @@ class App extends React.Component{
         this.state = {
           frontValue: '',
           backValue: '',
-          arr: []
+          arr: [],
+          image: []
         };
       }
 
+    
+
+      onSearchSubmit = async (term) => {
+        const response = await unsplash.get('/search/photos', {
+            params: { query: term },  
+        })
+        this.setState({ image: response.data.results});
+        console.log(this.state.image)
+    };
+
+  
+  
       
       handleChangeFrontValue = (e) => {
         this.setState({ frontValue: e.target.value });
@@ -23,6 +38,7 @@ class App extends React.Component{
 
       onAddItem = (e) => {
         e.preventDefault();
+        
         this.setState({arr: [...this.state.arr, 
           {
             Id: this.state.arr.length,
@@ -30,12 +46,11 @@ class App extends React.Component{
             back: this.state.backValue
           }
         ]})
-        this.setState({ frontValue: '', backValue: ''})
-        
+        this.setState({ frontValue: '', backValue: ''})        
       }
 
       render(){ 
-        console.log(this.state)
+       console.log(this.state.image)
         return(
           <React.Fragment>
             < InputComponent 
@@ -44,8 +59,10 @@ class App extends React.Component{
             backValue={this.state.backValue}
             handleChangeFrontValue={this.handleChangeFrontValue} 
             handleChangeBackValue={this.handleChangeBackValue}
+            onSearchsubmit={this.onSearchSubmit}
             />
             <Cards cards={this.state.arr}/>
+            <Image image={this.state.image[0]} />
          </React.Fragment>
         )
       }
