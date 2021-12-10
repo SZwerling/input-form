@@ -16,28 +16,23 @@ class App extends React.Component{
         };
       }
 
-    // onSearchSubmit(term){
-    //   axios.get('https://api.unsplash.com/search/photos',{
-    //     params: { query: term },
-    //     headers: {
-    //       Authorization: 'Client-ID K2NNfQZQYGr5Xl2MG1U74fyyYJGXA-zDR_TyZJLR4zo'
-    //     }
-    //   });
-    // }
 
-      onSearchSubmit = async (term) => {
+      onSearchSubmit = async (term = "desk") => {
         const response = await unsplash.get('/search/photos', {
             params: { query: term },  
         })
-        this.setState({ image: response.data.results});
+        this.setState({ image: response.data.results.slice(0, 3) });
     };
 
+    componentDidMount = () => {
+      this.onSearchSubmit('desk')
+  }
+
   
-  
-      
       handleChangeFrontValue = (e) => {
         this.setState({ frontValue: e.target.value });
       }
+
       handleChangeBackValue = (e) => {
         this.setState({ backValue: e.target.value });
       }
@@ -58,7 +53,6 @@ class App extends React.Component{
       }
 
       render(){ 
-       console.log(this.state.image)
         return(
           <React.Fragment>
             < InputComponent 
@@ -70,7 +64,7 @@ class App extends React.Component{
             onSearchsubmit={this.onSearchSubmit}
             />
             <Cards cards={this.state.arr}/>
-            <Image image={this.state.image[0]} />
+            <Image images={this.state.image} />
          </React.Fragment>
         )
       }

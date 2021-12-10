@@ -1,32 +1,26 @@
 import React from 'react';
 
-class Image extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            spans: 0
-        }
-    }
-
-
-
-    render(){
-
-        console.log(this.props.image)
-        if(this.props.image){
+const Image = (props) => {
+    if(!props.images){
         return(
-            <div >
-                <img 
-                
-                alt={this.props.image.descrption} 
-                src={this.props.image.urls.small}
-                />
-            </div>
+            <div>no images</div>
         )
-        } else {
-            return <div></div>
-        }
     }
-}
+    console.log(props.images)
+
+    const threeImages = (props.images.map((image) => {
+        return(
+            <div key={image.id}>
+            <img alt={image.description} src={image.urls.thumb}/>
+        </div>
+        )
+    }))
+    
+    return(
+        <div>{threeImages}</div>
+    )
+} 
+
+
 
 export default Image;
