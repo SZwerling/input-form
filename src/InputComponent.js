@@ -12,12 +12,12 @@ class Input extends React.Component{
             <form onSubmit={this.props.onAddItem}>
                 <label>
                   Front
-                    <input className="card" type="text" value={this.props.frontValue} onChange={this.props.handleChangeFrontValue} />
+                    <input className="indexCard" type="text" value={this.props.frontValue} onChange={this.props.handleChangeFrontValue} />
                 </label>
             
                 <label>
                   Back
-                    <input className="card" type="text" value={this.props.backValue} onChange={this.props.handleChangeBackValue} />
+                    <input className="indexCard" type="text" value={this.props.backValue} onChange={this.props.handleChangeBackValue} />
                 </label>
                 <input type="submit" value="submit" />
           </form>

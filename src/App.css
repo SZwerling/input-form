@@ -2,7 +2,7 @@ body {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.card {
+.indexCard {
   padding: 2rem;
   margin: 2rem;
   font-family: 'Merienda One', cursive;
@@ -17,4 +17,12 @@ box-shadow: 1.5px 1.5px 3.5px rgba(0,0,0,.5);
 
 .form {
   margin: 1rem;
+}
+
+.CardImg {
+  display: block;
+  max-width: 30px;
+  max-height: 5px;
+  width: auto;
+  height: auto;
 }

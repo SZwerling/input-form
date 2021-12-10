@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, CardGroup, CardImg, Row, Col } from 'reactstrap';
 
 const Image = (props) => {
     if(!props.images){
@@ -6,18 +7,26 @@ const Image = (props) => {
             <div>no images</div>
         )
     }
-    console.log(props.images)
+    
 
     const threeImages = (props.images.map((image) => {
+        
         return(
-            <div key={image.id}>
-            <img alt={image.description} src={image.urls.thumb}/>
-        </div>
+            <Col sm="4">
+                <Card key={image.id}>
+                    <CardImg 
+                        img="fluid"
+                        style={{ height: "25rem" }}
+                        alt={image.description} 
+                        src={image.urls.small}
+                    />
+                </Card>
+            </Col>
         )
     }))
     
     return(
-        <div>{threeImages}</div>
+        <Row>{threeImages}</Row>
     )
 } 
 
