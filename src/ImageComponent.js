@@ -9,16 +9,16 @@ const Image = (props) => {
     }
     
 
-    const threeImages = (props.images.map((image) => {
+    const threeImages = (props.images.map(({ id, description, urls}) => {
         
         return(
-            <Col sm="4">
-                <Card key={image.id}>
+            <Col key={id} sm="4">
+                <Card >
                     <CardImg 
                         img="fluid"
-                        style={{ height: "25rem" }}
-                        alt={image.description} 
-                        src={image.urls.small}
+                        style={{ height: "23rem" }}
+                        alt={description} 
+                        src={urls.small}
                     />
                 </Card>
             </Col>

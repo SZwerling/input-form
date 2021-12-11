@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import InputComponent from './InputComponent';
-import Cards from './Cards';
+
 import unsplash from './api/unsplash';
 import Image from './ImageComponent';
 import { Container } from 'reactstrap';
@@ -57,7 +57,7 @@ class App extends React.Component{
 
       render(){ 
         return(
-          <React.Fragment>
+          
             <Container>
               < InputComponent 
               onAddItem={this.onAddItem} 
@@ -70,7 +70,7 @@ class App extends React.Component{
               {/* <Cards cards={this.state.arr}/> */}
               <Image images={this.state.image} />
             </Container>
-         </React.Fragment>
+         
         )
       }
 } 
