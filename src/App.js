@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import InputComponent from './InputComponent';
+import Cards from './Cards';
 
 import unsplash from './api/unsplash';
 import Image from './ImageComponent';
@@ -14,6 +15,7 @@ class App extends React.Component{
         this.state = {
           frontValue: '',
           backValue: '',
+          Id: 0,
           arr: [],
           image: []
         };
@@ -45,13 +47,14 @@ class App extends React.Component{
         
         this.setState({arr: [...this.state.arr, 
           {
-            Id: this.state.arr.length,
+            Id: this.state.Id,
             front: this.state.frontValue, 
             back: this.state.backValue
           }
         ]})
         this.onSearchSubmit(this.state.frontValue);
         this.setState({ frontValue: '', backValue: ''});
+        this.setState({ Id: this.state.Id + 1})
                 
       }
 
@@ -69,6 +72,7 @@ class App extends React.Component{
               />
               {/* <Cards cards={this.state.arr}/> */}
               <Image images={this.state.image} />
+              <Cards cardsArr={this.state.arr}/>
             </Container>
          
         )
