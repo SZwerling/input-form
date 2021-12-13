@@ -38,9 +38,9 @@ class Cards extends React.Component{
 
 //make a card here
 render(){
-    let selected = []
+   
     let arr = this.props.cardsArr.length < 1 ? this.state.cards : this.props.cardsArr;
-    console.log(this.state.cards)
+    
 const cards = arr.map((card) => {  //map to props to card here
     return(
         <Col key={card.Id}>

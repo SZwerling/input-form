@@ -10,6 +10,7 @@ const Image = (props) => {
     
 
     const threeImages = (props.images.map(({ id, description, urls}) => {
+        console.log(props)
         
         return(
             <Col key={id} sm="4">
