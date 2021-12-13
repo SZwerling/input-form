@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardBody, Col, Row, CardText } from 'reactstrap';
+import SelectedCard from './SelectedCard'; 
+import { Card, CardBody, Col, Row, CardText, Button } from 'reactstrap';
 
 class Cards extends React.Component{
     constructor(props){
@@ -20,11 +21,24 @@ class Cards extends React.Component{
                 front: 'arm',
                 back: 'brazo'
             }
-        ]}
+        ],
+            selectedCard:  {
+                Id: 1,
+                front: 'head',
+                back: 'cabeza'
+            }
+        }
     }
+
+    selectedCard = (card) => {
+        this.setState({ selectedCard: card })
+    }
+
+  
 
 //make a card here
 render(){
+    let selected = []
     let arr = this.props.cardsArr.length < 1 ? this.state.cards : this.props.cardsArr;
     console.log(this.state.cards)
 const cards = arr.map((card) => {  //map to props to card here
@@ -33,10 +47,11 @@ const cards = arr.map((card) => {  //map to props to card here
             <Card className='mt-3 mb-5'>
                 <CardBody >
                     <CardText tag="h2">
-                This is the card ID: {card.Id} <br/>
-                    Front word: {card.front} <br/>
-                    Back word: {card.back}
+                    ID: {card.Id} <br/>
+                    Front: {card.front} <br/>
+                    Back: {card.back}
                     </CardText>
+                    <Button onClick={() => this.selectedCard(card)} color='success'>CHANGE ME</Button>
                 </CardBody>
             </Card>
         </Col>
@@ -47,6 +62,7 @@ const cards = arr.map((card) => {  //map to props to card here
     return(
         <Row>
             {cards}
+            <SelectedCard selectedCard = {this.state.selectedCard}/>
         </Row>
     )
 }
