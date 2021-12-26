@@ -6,22 +6,31 @@ import InputComponent from './InputComponent'
 class SelectedCard extends React.Component{
     constructor(props){
         super(props);
-        this.state= {}
+        this.state= {
+            frontValue: ''
+        }
     }
+
+    handleChangeFrontValue = (e) => {
+        this.setState({ frontValue: e.target.value });
+      }
+
+      
 
 
     render(){
         console.log(this.props.selectedCard)
+       
             return(
-                <form onSubmit={this.props.onAddItem}>
+                <form onSubmit={console.log('form submit')}>
                 <label>
                   Front
-                    <input className="indexCard" type="text" value={this.props.selectedCard.front} onChange={this.props.handleChangeFrontValue} />
+                    <input className="indexCard" type="text" value={this.props.selectedCard.front} onChange={e => this.handleChangeFrontValue(e)} />
                 </label>
             
                 <label>
                   Back
-                    <input className="indexCard" type="text" value={this.props.selectedCard.back} onChange={this.props.handleChangeBackValue} />
+                    <input className="indexCard" type="text" value={this.props.selectedCard.back} onChange={console.log((e) => e.target.value)} />
                 </label>
                 <input type="submit" value="submit" />
           </form>

@@ -1,4 +1,12 @@
 import React from 'react';
+
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import InputComponent from './InputComponent';
@@ -60,20 +68,13 @@ class App extends React.Component{
 
       render(){ 
         return(
-          
-            <Container>
-              < InputComponent 
-              onAddItem={this.onAddItem} 
-              frontValue={this.state.frontValue}
-              backValue={this.state.backValue}
-              handleChangeFrontValue={this.handleChangeFrontValue} 
-              handleChangeBackValue={this.handleChangeBackValue}
-              onSearchsubmit={this.onSearchSubmit}
-              />
-              {/* <Cards cards={this.state.arr}/> */}
-              <Image images={this.state.image} />
-              <Cards cardsArr={this.state.arr}/>
-            </Container>
+          <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<InputComponent />} />
+            <Route path="cards" element={<Cards />} />
+            <Route path="image" element={<Image />} />
+          </Routes>
+        </BrowserRouter>
          
         )
       }
