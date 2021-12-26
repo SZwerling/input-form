@@ -4,10 +4,10 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Container } from "reactstrap";
+import { Container, Na } from "reactstrap";
 import InputComponent from "./InputComponent";
 import Cards from "./Cards";
-import Nav from "./NavComponent";
+import Header from "./NavComponent";
 import unsplash from "./api/unsplash";
 import Image from "./ImageComponent";
 
@@ -63,8 +63,9 @@ class App extends React.Component {
    render() {
       return (
          <Container>
-            <Nav />
+            
             <BrowserRouter>
+            <Header />
                <Routes>
                   <Route path="/input" element={<InputComponent />} />
                   <Route
