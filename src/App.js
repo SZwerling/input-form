@@ -14,7 +14,7 @@ import Cards from './Cards';
 
 import unsplash from './api/unsplash';
 import Image from './ImageComponent';
-import { Container } from 'reactstrap';
+
 
 
 class App extends React.Component{
@@ -70,9 +70,9 @@ class App extends React.Component{
         return(
           <BrowserRouter>
           <Routes>
-            <Route path="/" element={<InputComponent />} />
-            <Route path="cards" element={<Cards />} />
-            <Route path="image" element={<Image />} />
+            <Route path="/input" element={<InputComponent />} />
+            <Route path="cards" element={<Cards cardsArr={this.state.arr} />} />
+            <Route path="image" element={<Image images={this.state.image}/>} />
           </Routes>
         </BrowserRouter>
          
