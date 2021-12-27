@@ -27,17 +27,17 @@ const Header = () => {
             <Collapse isOpen={navToggle} navbar>
                <Nav className="me-auto" navbar>
                   <NavItem>
-                     <Link to="cards">
+                     <Link className="linko" to="cards">
                         <NavLink>CARDS</NavLink>
                      </Link>
                   </NavItem>
                   <NavItem>
-                     <Link to="input">
+                     <Link className="linko" to="input">
                         <NavLink>INPUT</NavLink>
                      </Link>
                   </NavItem>
                   <NavItem>
-                     <Link to="image">
+                     <Link className="linko" to="image">
                         <NavLink>IMAGES</NavLink>
                      </Link>
                   </NavItem>

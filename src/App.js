@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Container, Na } from "reactstrap";
+import { Container } from "reactstrap";
 import InputComponent from "./InputComponent";
 import Cards from "./Cards";
 import Header from "./NavComponent";
@@ -62,12 +62,11 @@ class App extends React.Component {
 
    render() {
       return (
-         <Container>
-            
+         <Container>      
             <BrowserRouter>
             <Header />
                <Routes>
-                  <Route path="/input" element={<InputComponent />} />
+                  <Route path="input" element={<InputComponent />} />
                   <Route
                      path="cards"
                      element={<Cards cardsArr={this.state.arr} />}

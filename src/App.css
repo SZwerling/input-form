@@ -26,3 +26,7 @@ box-shadow: 1.5px 1.5px 3.5px rgba(0,0,0,.5);
   width: auto;
   height: auto;
 }
+
+.linko {
+  text-decoration: none !important;
+}
