@@ -1,29 +1,45 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
+import { Field, reduxForm } from "redux-form";
+import { cardCreator } from './actions/index';
+import { fuff } from './actions';
 
+class Input extends React.Component {
+   renderInput = ({ input, label }) => {
+      //weird syntax takes all key value pairs from input object (from reudx form) and sends to input element
+      return (
+         <div >
+            <input className="indexCard" {...input} />
+            <label>{label}</label>
+         </div>
+      );
+   };
 
-class Input extends React.Component{
-  
+   onSubmit(formValues){
+      console.log(this.props.fuff)
+   }
+   
+   render() {
 
-// this.props.onSearchSubmit(this.state.term)
-
-    render(){
-        return(
-         
-            <form onSubmit={this.props.onAddItem}>
-                <label>
-                  Front
-                    <input className="indexCard" type="text" value={this.props.frontValue} onChange={this.props.handleChangeFrontValue} />
-                </label>
-            
-                <label>
-                  Back
-                    <input className="indexCard" type="text" value={this.props.backValue} onChange={this.props.handleChangeBackValue} />
-                </label>
-                <input type="submit" value="submit" />
-          </form>
-          
-        )
-    }
+      return (
+         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+            <Field name="front" component={this.renderInput} label="front" />
+            <Field name="back" component={this.renderInput} label="back" />
+            <button>submit</button>
+         </form>
+      );
+   }
 }
 
-export default Input;
+const wrapped = reduxForm({
+   form: "newCard"
+})(Input);
+
+export default connect(null, fuff)(wrapped)
+
+
+
+
+
+//
+//  className="indexCard"

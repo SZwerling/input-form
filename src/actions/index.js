@@ -1,13 +1,17 @@
 
 
-export const cardAction = (id, front, back) => {
+export const cardCreator = values => {
     return {
     type: 'NEW_CARD',
-    payload: {
-        id: id,
-        front: front,
-        back: back
-        }
+    payload: [values]
     }
 }
 
+
+
+export const fuff = stuff => {
+    return {
+        type: 'BUFF',
+        payload: stuff
+    }
+}
