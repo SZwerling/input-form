@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { cardCreator } from './actions/index';
-import { fuff } from './actions';
+
 
 class Input extends React.Component {
    renderInput = ({ input, label }) => {
@@ -15,14 +15,15 @@ class Input extends React.Component {
       );
    };
 
-   onSubmit(formValues){
-      console.log(this.props.fuff)
+   onSubmit = (values) => {
+      
+      this.props.cardCreator(values)
    }
    
    render() {
-
+      console.log(this.props.cards)
       return (
-         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+         <form onSubmit={() => this.props.handleSubmit(this.onSubmit)}>
             <Field name="front" component={this.renderInput} label="front" />
             <Field name="back" component={this.renderInput} label="back" />
             <button>submit</button>
@@ -31,11 +32,25 @@ class Input extends React.Component {
    }
 }
 
-const wrapped = reduxForm({
-   form: "newCard"
-})(Input);
+const mapDispatchToProps = {
+   cardCreator: (text) => (cardCreator(text))
+};
 
-export default connect(null, fuff)(wrapped)
+const mapStateToProps = (state) => ({
+      cards: state.cards   
+})
+
+
+
+Input = connect(
+   null,
+   mapDispatchToProps
+)(Input);
+
+export default reduxForm({
+   form: 'newCard'
+})(Input)
+
 
 
 
