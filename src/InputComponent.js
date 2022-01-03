@@ -17,13 +17,13 @@ class Input extends React.Component {
 
    onSubmit = (values) => {
       
-      this.props.cardCreator(values)
+      console.log(values)
    }
    
    render() {
-      console.log(this.props.cards)
+      console.log(this.props.cardCreator)
       return (
-         <form onSubmit={() => this.props.handleSubmit(this.onSubmit)}>
+         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
             <Field name="front" component={this.renderInput} label="front" />
             <Field name="back" component={this.renderInput} label="back" />
             <button>submit</button>
@@ -42,14 +42,18 @@ const mapStateToProps = (state) => ({
 
 
 
-Input = connect(
-   null,
-   mapDispatchToProps
-)(Input);
+Input = reduxForm({
+   form: 'newCard',
+   cardCreator
+})(Input);
 
-export default reduxForm({
-   form: 'newCard'
-})(Input)
+export default Input = connect(mapStateToProps, mapDispatchToProps)(Input);
+
+// Signup = reduxForm({
+//    form: 'signup',
+//    validate})(Signup);
+   
+//    export default Signup = connect(mapStateToProps, actions)(Signup);
 
 
 
