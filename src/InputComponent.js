@@ -6,7 +6,7 @@ import { cardCreator } from './actions/index';
 
 class Input extends React.Component {
    renderInput = ({ input, label }) => {
-      //weird syntax takes all key value pairs from input object (from reudx form) and sends to input element
+      //weird syntax takes all key value pairs from input object (from redux form) and sends to input element
       return (
          <div >
             <input className="indexCard" {...input} />
@@ -21,7 +21,7 @@ class Input extends React.Component {
    }
    
    render() {
-      console.log(this.props.cardCreator)
+      console.log(this.props.state)
       return (
          <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
             <Field name="front" component={this.renderInput} label="front" />
